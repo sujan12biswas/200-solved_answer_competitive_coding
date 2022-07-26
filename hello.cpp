@@ -2125,3 +2125,892 @@ using namespace std;
 
 //}
 
+//Merge Sort
+
+// void merge(int arr[],int start,int mid,int end){
+
+//     int n1 = mid-start+1;
+//     int n2 = end-mid;
+
+//     int arr1[n1];
+//     int arr2[n2];
+
+//     for(int i=0;i<n1;i++){
+//         arr1[i] = arr[start+i];
+//     }
+
+//     for(int i=0;i<n1;i++){
+//         arr2[i] = arr[mid+1+i];
+//     }
+//     int i=0,j=0,k=start;
+
+//     while(i<n1 && j<n2){
+//         if(arr1[i]<arr2[j]){
+//           arr[k]=  arr1[i];
+//             i++;k++;
+//         }else{
+//            arr[k] = arr2[j];
+//             j++;k++;
+//         }
+//     }
+//     while(i<n1){
+//         arr[k]=  arr1[i];
+//             i++;k++;
+//     }
+
+//     while(j<n2){
+//         arr[k]=  arr2[j];
+//             j++;k++;
+//     }
+
+// }
+
+// void mergeSort(int arr[],int start,int end){
+
+//     if(start<end){
+//         int mid = (start+end)/2;
+
+//         mergeSort(arr,start,mid);
+//         mergeSort(arr,mid+1,end);
+
+//         merge(arr,start,mid,end);
+//     }
+
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+
+//     for(int i=0 ;i<n;i++){
+//         cin>>arr[i];
+//     }
+
+//     mergeSort(arr,0,n-1);
+
+//     for(int i=0;i<n;i++){
+//         cout<<arr[i]<<" ";
+//     }
+
+//     return 0;
+
+
+// }
+
+
+//DP fibonacci 
+
+// const long long int N =1e10+7;
+// long long int dp[N];
+
+// long long int fibonaccii(int n){
+//     if(n==0||n==1){
+//         return n;
+//     }
+
+//     if(dp[n] != -1){
+//         return dp[n];
+//     }
+
+//     long long int result = fibonaccii(n-1)+fibonaccii(n-2);
+
+//     return dp[n] = result;
+// }
+
+
+// int main(){
+//     memset(dp,-1,sizeof(dp));
+//     int n;
+//     cin>>n;
+
+//     cout<<fibonaccii(n);
+
+//     return 0;
+// }
+
+//Frog 
+
+// const int N = 1e5+10;
+// int froog[N];
+// int dp[N];
+
+// int height(int n,int k){
+//     if(n==0){
+//         return 0;
+//     }
+
+//     if(dp[n] != -1){
+//         return dp[n];
+//     }
+//     int ans = INT_MAX;
+
+//     //ans = min(ans,height(n-1)+abs(froog[n]-froog[n-1]));
+//     for(int i=1;i<=k;i++){
+//         if(n-i>=0){
+//         ans = min(ans,height(n-i,k)+abs(froog[n]-froog[n-i]));
+//         }
+//     }
+
+
+//     return dp[n] = ans;
+// }
+
+// int main(){
+//     memset(dp,-1,sizeof(dp));
+//     int n;
+//     cin>>n;
+//     int k=5;
+//     for(int i=0;i<n;i++){
+//         cin>>froog[i];
+//     }
+
+//     cout<<height(n-1,k);
+
+//     return 0;
+// }
+
+//Longest incresing subsequence
+
+// const int N = 1e5+10;
+
+// int arr[N];
+
+// int lis(int n){
+//     int ans =1;
+
+//     for(int i=0;i<n;i++){
+//         if(arr[i]<=arr[n]){
+//             ans = max(ans,lis(i)+1);
+
+//         }
+//     }
+
+//     return ans;
+
+    
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+
+//     int ans = 0;
+
+//     for(int i=0;i<n;i++){
+//         ans = max(ans,lis(i));
+//     }
+
+//     cout<<ans;
+
+//     return 0;
+
+
+// }
+
+
+
+
+//Longest Incresing SubSequence
+
+// const int N = 1e3+10;
+
+// int arr[N];
+
+// int dp[N];
+
+// int lis(int n){
+
+//     if(dp[n] != -1){
+//         return dp[n];
+//     }
+//     int ans =1;
+
+//     for(int i=0;i<n;i++){
+//         if(arr[i]<=arr[n]){
+//             ans = max(ans,lis(i)+1);
+//         }
+//     }
+
+//     return dp[n] = ans;
+// }
+
+
+// int main(){
+
+//     memset(dp,-1,sizeof(dp));
+//     int n;
+//     cin>>n;
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+
+//     int ans =0;
+
+//     for(int i=0;i<n;i++){
+//         ans = max(ans,lis(i));
+//     }
+
+//     cout<<ans<<endl;
+
+//     return 0;
+
+
+
+// }
+
+
+// Coin Change Problem 1
+
+// const int N = 1e5+10;
+
+// int arr[N];
+// int dp[N];
+
+// int coinChange(int arr[],int k,int n){
+
+//     if(k==0){
+//         return 0;
+//     }
+//     if(dp[k]!= -1){
+//         return dp[k];
+//     }
+//     int ans = INT_MAX;
+
+//     for(int i =0;i<n;i++){
+//         if(k-arr[i]>=0){
+//         ans = min(ans+0LL,coinChange(arr,k-arr[i],n)+1ll);
+//         }
+
+//     }
+
+//     return dp[k]= ans;
+// }
+
+
+
+// int main(){
+//     memset(dp,-1,sizeof(dp));
+//     int n;
+//     cin>>n;
+//     int k;
+//     cin>>k;
+
+//     for (int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     if(coinChange(arr,k,n)==INT_MAX){
+//         cout<<"-1"<<endl;
+//     }else{
+//         cout<<coinChange(arr,k,n)<<endl;
+//     }
+
+
+
+// }
+
+// const int N = 1e5+10;
+// int arr[N];
+
+// int coinChange(int arr[],int k,int n){
+//     if(k==0){
+//         return 1;
+//     }
+//     int ans = 0;
+//     for(int i=0;i<n;i++){
+        
+//         if(k-arr[i]>=0){
+//            ans += coinChange(arr,k-arr[i],n);
+//         }
+//     }
+
+//     return ans;
+// }
+
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     int k;
+//     cin>>k;
+
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+
+//    cout<< coinChange(arr, k, n);
+
+//    return 0;
+// }
+
+// const int N = 1e3+10;
+// int arr[N];
+// int dp[N][N];
+
+// int coinChange2(int index,int arr[],int k){
+    // if(k==0){
+    //     return 1;
+    // }
+
+    // if(k==0){
+    //     return 0;
+    // }
+
+    // if(index<0){
+    //     return 0;
+    // }
+//     if(dp[k][index] != -1){
+//         return dp[k][index];
+//     }
+
+//     //int ways =0;
+//     int ans =INT_MAX;
+
+//     // for(int coin_amount =0 ;coin_amount<= k; coin_amount+=arr[index]){
+//     //     ways +=coinChange2(index-1,arr,k-coin_amount);
+//     // }
+//     for(int i=0;i<=index;i++){
+//         if((k-arr[i])>=0){
+//         ans = min(ans, coinChange2(index,arr,k-arr[i])+1);
+//         }
+//     }
+
+//    // return dp[k][index] = ways;
+//     return ans;
+// }
+
+// int main(){
+//     memset(dp,-1,sizeof(dp));
+//     int n;
+//     cin>>n;
+//     int k;
+//     cin>>k;
+
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+
+//     cout<<coinChange2(n-1,arr,k);
+
+//     return 0;
+// }
+
+//Quick Srot
+
+// void swap(int arr[],int i,int j){
+//     int temp = arr[i];
+//     arr[i]=arr[j];
+//     arr[j]=temp;
+// }
+
+// int partition(int arr[],int start, int end){
+//     int pivot = arr[end];
+//     int i =start-1;
+
+//     for(int j=0;j<end;j++){
+//         if(arr[j]<pivot){
+//             i++;
+//             swap(arr,i,j);
+//         }
+
+//     }
+//     swap(arr,i+1,end);
+
+//     return i+1;
+// }
+
+// void quickSort(int arr[],int start,int end){
+//     if(start<end){
+//         int pivot = partition(arr,start,end);
+
+//         quickSort(arr,start, pivot-1);
+//         quickSort(arr,pivot+1,end);
+//     }
+// }
+
+// int main(){
+//     int arr[]={5,4,6,8,1,2,5};
+//     int size = sizeof(arr)/sizeof(arr[0]);
+    
+//     quickSort(arr,0,6);
+
+//     for(int i=0;i<size;i++){
+//         cout<<arr[i]<<" ";
+//     }cout<<endl;
+
+//     return 0;
+
+    
+// }
+
+
+// coins 1
+
+// const int N = 10e6;
+
+// int coins[N];
+
+// int dp[N];
+
+// int calculation(int total, int n){
+
+//     if(total == 0){
+//         return 0;
+//     }
+//     if(dp[total] != -1){
+//         return dp[total];
+//     }
+//     int ans = INT_MAX;
+//     for(int i=0;i<n;i++){
+//         if(total-coins[i]>=0){
+//             ans = min(ans+0LL,calculation((total-coins[i]),n)+1LL);
+//         }
+//     }
+
+//     return dp[total] = ans;
+// }
+
+// int minCoins(int total,int n){
+
+//     memset(dp,-1,sizeof(dp));
+//     int ans = calculation(total,n);
+
+//     if(ans == INT_MAX){
+//         return -1;
+//     }else{
+//         return ans;
+//     }
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     int total;
+//     cin>>total;
+
+//     for(int i=0;i<n;i++){
+//         cin>>coins[i];
+//     }
+
+//     cout<<minCoins(total,n);
+// }
+
+
+// const int N = 1e5+10;
+//  int coins[N];
+
+ 
+
+//  int coinChange(int amount,int index){
+
+//     if(amount ==0){
+//         return 1;
+//     }
+//     if(index<0){
+//         return 0;
+//     }
+
+//     int ways =0;
+
+//     for(int coinAmount = 0; coinAmount<=amount;coinAmount+=coins[index]){
+//         ways += coinChange((amount-coinAmount),index-1);    
+//     }
+
+//     return ways;
+//  }
+
+
+//  int main(){
+//     int n;
+//     cin>>n;
+
+//     int amount;
+//     cin>>amount;
+
+//     for(int i=0;i<n;i++){
+//         cin>>coins[i];
+//     }
+
+//     cout<<coinChange(amount,n-1);
+
+//     return 0;
+//  }
+
+
+
+
+// const int N = 1e5+10;
+
+// int frogs[N];
+
+// long long minDistance(int k,int n){
+
+//     if(n==0){
+//         return 0;
+//     }
+//     long long ans = INT_MAX;
+
+//     for(int i=1;i<=k;i++){
+//         if(n-k>=0){
+//             ans = min(ans,(minDistance(k,n-i)+abs(frogs[n]-frogs[n-i])));
+//         }
+//     }
+
+//     return ans;
+
+
+// }
+
+
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     int k ;
+//     cin>>k;
+
+//     for(int i=0;i<n;i++){
+//         cin>>frogs[i];
+//     }
+
+//     cout<<minDistance(k,n-1);
+// }
+
+
+
+// 0-1 Knapsack
+
+// const int N =1e3+10;
+
+// int weight[N], value[N];
+
+// int dp[N][N];
+
+// int knapsack(int size,int k){
+
+
+//     if(k==0){
+//         return 0;
+//     }
+
+//     if(size<0){
+//         return 0;
+//     }
+
+
+//     if(dp[size][k] != -1){
+//         return dp[size][k];
+//     }
+//     int ans = 0;
+
+//     ans = max(ans,knapsack(size-1,k));
+
+//     if(k-weight[size]>=0){
+//         ans = max(ans, knapsack(size-1,k-weight[size])+value[size]);
+//     }
+
+//     return dp[size][k] = ans;
+// }
+
+// int main(){
+
+//     memset(dp,-1,sizeof(dp));
+//     int n;
+//     cin>>n;
+//     int k;
+//     cin>>k;
+
+//     for(int i=0;i<n;i++){
+//         cin>>weight[i]>>value[i];
+
+
+//     }
+
+//     cout<<knapsack(n-1,k);
+// }
+
+
+//  Marge Sort
+
+
+
+
+
+
+// void merge(int arr[],int start, int mid, int end){
+//     int size1 = mid-start+1;
+//     int size2 = end-mid;
+
+//     int subArr1[size1];
+//     int subArr2[size2];
+
+//     for(int i=0;i<size1;i++){
+//         subArr1[i]=arr[start+i];
+//     }
+//     for(int i=0;i<size2;i++){
+//         subArr2[i]=arr[mid+1+i];
+//     }
+
+//     int pointer1 =0,pointer2=0, pointer = start;
+
+//     while(pointer1<size1 && pointer2<size2){
+//         if(subArr1[pointer1]>subArr2[pointer2]){
+//             arr[pointer]=subArr2[pointer2];
+//             pointer++;pointer2++;
+//         }else{
+//             arr[pointer]=subArr1[pointer1];
+//             pointer++;pointer1++;
+//         }
+//     }
+//     while(pointer2<size2){
+//         arr[pointer]=subArr2[pointer2];
+//             pointer++;pointer2++;
+//     }
+//     while(pointer1<size1){
+//         arr[pointer]=subArr1[pointer1];
+//             pointer++;pointer1++;
+//     }
+// }
+
+// void mergeSortt(int arr[],int start,int end){
+//     if(start<end){
+//         int mid = (start+end)/2;
+    
+//         mergeSortt(arr,start,mid);
+        
+//         mergeSortt(arr,mid+1,end);
+    
+//         merge(arr,start,mid,end);
+//     }
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+
+//     mergeSortt(arr,0,n-1);
+
+//     for(int i=0;i<n;i++){
+//         cout<<arr[i]<<" ";
+//     }
+
+
+
+// }
+
+
+
+
+// Knapsack 1
+
+
+// const int N = 10e3;
+
+// int weight[N],value[N];
+
+// int dp[N][N];
+
+// int knapsack(int index,int weight_left){
+
+    
+
+//     if(index <0){
+//         return 0;
+//     }
+//     if(weight_left==0){
+//         return 0;
+//     }
+
+//     if(dp[index][weight_left] != -1){
+//         return dp[index][weight_left];
+//     }
+    
+//     int ans = 0;
+
+//     ans = max(ans,knapsack(index-1,weight_left));
+
+//     if(weight_left-weight[index]>=0){
+//         ans = max(ans,knapsack(index-1,weight_left-weight[index])+value[index]);
+//     }
+
+//     return dp[index][weight_left] = ans;
+// }
+
+
+// int main(){
+
+//     memset(dp,-1,sizeof(dp));
+//     int n,k;
+//     cin>>n>>k;
+
+//     for(int i=0;i<n;i++){
+//         cin>>weight[i]>>value[i];
+//     }
+
+//     cout<<knapsack(n-1,k);
+
+//     return 0;
+// }
+
+// void merge(int arr[],int start,int mid,int end){
+
+//     int size1 = mid-start+1;
+//     int size2 = end-mid;
+
+//     //temporary array
+
+//     int temp1[size1];
+//     int temp2[size2];
+
+//     for(int i=0;i<size1;i++){
+//         temp1[i] = arr[start+i];
+//     }
+//     for(int i=0;i<size2;i++){
+//         temp2[i] = arr[mid+1+i];
+//     }
+
+//     int pointer = start, pointer1 = 0, pointer2= 0;
+
+//     while(pointer1<size1 && pointer2<size2){
+//         if(temp1[pointer1]<temp2[pointer2]){
+//             arr[pointer] = temp1[pointer1];
+//             pointer1++;pointer++;
+//         }else{
+//             arr[pointer] = temp2[pointer2];
+//             pointer2++; pointer++;
+//         }
+//     }
+
+//     while(pointer1<size1){
+//         arr[pointer]<temp1[pointer1];
+//         pointer1++;pointer++;
+//     }
+//     while(pointer2<size2){
+//         arr[pointer] = temp2[pointer2];
+//         pointer2;pointer;
+//     }
+// }
+
+
+// void mergeSort(int arr[], int start, int end){
+//     if(start<end){
+//         int mid = (start+end)/2;
+
+//         mergeSort(arr,start,mid);
+//         mergeSort(arr,mid+1,end);
+
+//         merge(arr,start,mid,end);
+
+//     }
+// }
+
+
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+
+//     mergeSort(arr, 0,n-1);
+
+//     for(int i=0;i<n;i++){
+//         cout<<arr[i]<<" ";
+//     }cout<<endl;
+
+//     return 0;
+// }
+
+
+// void mergeSort(int arr[],int l,int r){
+//     if(l<r){
+//         int mid = (l+r)/2;
+//         mergeSort(arr,l,mid);
+//         mergeSort(arr,mid+1,r);
+
+//         mergee(arr,l,mid,r);
+//     }
+// }
+
+// void mergee(int arr[],int l,int mid,int r){
+//     int n1 = mid-l+1;
+//     int n2 = r-mid;
+
+//     int a[n1];
+//     int b[n2];
+
+//     for(int i=0;i<n1;i++){
+//         a[i] = arr[l+i];
+//     }
+//     for(int i=0;i<n2;i++){
+//         b[i] = arr[mid+1+i];
+//     }
+
+//     int i=0,j=0,k = l;
+
+//     while(i<n1 && j<n2){
+//         if(a[i] < b[j]){
+//             arr[k] = a[i];
+//             k++;i++;
+
+//         }
+
+//         else{
+//             arr[k] = b[j];
+//             k++;
+//             j++;
+//         }
+//     }
+
+//     while(i<n1){
+//         arr[k] = a[i];
+//         k++;i++;
+//     }
+//     while(j<n2){
+//         arr[k] = b[j];
+//         k++;j++;
+//     }
+// }
+
+
+// int main(){
+//     int arr[] ={5,4,6,2,1};
+//     mergeSort(arr,0,4);
+//     for(int i=0;i<5;i++){
+//         cout<<arr[i]<<" ";
+//     }cout<<endl;
+
+//     return 0;
+// }
+
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     cout<<"////////////"<<endl;
+//     for(int i=0;i<n;i++){
+//         if(i == 4){
+//             cout<<"xxx"<<" ";;
+//             continue;
+//         }
+//         cout<<i<<" ";
+//     }
+// }
+
+
+
+
+
+
+
+
